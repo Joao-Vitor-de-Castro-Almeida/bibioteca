@@ -42,11 +42,11 @@ public class DBService {
            editoraRepo.save(editora01);
            editoraRepo.save(editora02);
 
-            Livro livro01 = new Livro(0, "Contos de um Larapio", "54.341.884-9545-88", 45,
+            Livro livro01 = new Livro(null, "Contos de um Larapio", "54.341.884-9545-88", 45,
                     LocalDate.now(), new BigDecimal("48"), autor01, editora01, Status.LENDO, Conservacao.BOM);
-            Livro livro02 = new Livro(0, "Leis do Universo", "12.345.678-0001-00", 185,
+            Livro livro02 = new Livro(null, "Leis do Universo", "12.345.678-0001-00", 185,
                     LocalDate.now(), new BigDecimal("150"), autor03, editora02, Status.LENDO, Conservacao.BOM);
-            Livro livro03 = new Livro(0, "Lendas do Norte", "18.468.695-4885-78", 95,
+            Livro livro03 = new Livro(null, "Lendas do Norte", "18.468.695-4885-78", 95,
                     LocalDate.now(), new BigDecimal("95"), autor02, editora01, Status.LENDO, Conservacao.BOM);
 
             livroRepo.save(livro01);

@@ -1,9 +1,13 @@
 package com.curso.domains;
 
+import com.curso.domains.dtos.AutorDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -18,11 +22,12 @@ public class Autor {
     private String nome;
 
     @NotNull @NotBlank
+    @Column(unique = true)
     private String documentoPessoal;
 
-    @ManyToOne
-    @JoinColumn(name = "idlivro")
-    private Livro livro;
+    @JsonIgnore
+    @OneToMany(mappedBy = "autor")
+    private List<Livro> livros = new ArrayList<>();
 
     public Autor() {
     }
@@ -31,6 +36,12 @@ public class Autor {
         this.id = id;
         this.nome = nome;
         this.documentoPessoal = documentoPessoal;
+    }
+
+    public Autor(AutorDTO dto){
+        this.id = dto.getId();
+        this.nome = dto.getNome();
+        this.documentoPessoal = dto.getDocumentoPessoal();
     }
 
     public Integer getId() {
@@ -57,12 +68,12 @@ public class Autor {
         this.documentoPessoal = documentoPessoal;
     }
 
-    public Livro getLivro() {
-        return livro;
+    public List<Livro> getLivros() {
+        return livros;
     }
 
-    public void setLivro(Livro livro) {
-        this.livro = livro;
+    public void setLivros(List<Livro> livros) {
+        this.livros = livros;
     }
 
     @Override

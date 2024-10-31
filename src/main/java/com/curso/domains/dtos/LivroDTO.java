@@ -15,14 +15,14 @@ import java.time.LocalDate;
 
 public class LivroDTO {
 
-    private long idLivro;
+    private Long idLivro;
 
-    @NotNull(message = "O campo nome não pode ser nulo")
-    @NotBlank(message = "campo nome não pode estar vazio")
+    @NotNull(message = "O campo titulo não pode ser nulo")
+    @NotBlank(message = "campo titulo não pode estar vazio")
     private String titulo;
 
-    @NotNull(message = "O campo nome não pode ser nulo")
-    @NotBlank(message = "campo nome não pode estar vazio")
+    @NotNull(message = "O campo isbn não pode ser nulo")
+    @NotBlank(message = "campo isbn não pode estar vazio")
     private String isbn;
 
     @NotNull(message = "O campo numeroPaginas não pode ser nulo")
@@ -31,7 +31,7 @@ public class LivroDTO {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCompra;
 
-    @NotNull(message = "O campo numeroPaginas não pode ser nulo")
+    @NotNull(message = "O campo valorCompra não pode ser nulo")
     @Digits(integer = 15, fraction = 3)
     private BigDecimal valorCompra;
 
@@ -58,27 +58,27 @@ public class LivroDTO {
         this.conservacao = livro.getConservacao().getId();
     }
 
-    public long getIdLivro() {
+    public Long getIdLivro() {
         return idLivro;
     }
 
-    public void setIdLivro(long idLivro) {
+    public void setIdLivro(Long idLivro) {
         this.idLivro = idLivro;
     }
 
-    public @NotNull(message = "O campo nome não pode ser nulo") @NotBlank(message = "campo nome não pode estar vazio") String getTitulo() {
+    public @NotNull(message = "O campo titulo não pode ser nulo") @NotBlank(message = "campo titulo não pode estar vazio") String getTitulo() {
         return titulo;
     }
 
-    public void setTitulo(@NotNull(message = "O campo nome não pode ser nulo") @NotBlank(message = "campo nome não pode estar vazio") String titulo) {
+    public void setTitulo(@NotNull(message = "O campo titulo não pode ser nulo") @NotBlank(message = "campo titulo não pode estar vazio") String titulo) {
         this.titulo = titulo;
     }
 
-    public @NotNull(message = "O campo nome não pode ser nulo") @NotBlank(message = "campo nome não pode estar vazio") String getIsbn() {
+    public @NotNull(message = "O campo isbn não pode ser nulo") @NotBlank(message = "campo isbn não pode estar vazio") String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(@NotNull(message = "O campo nome não pode ser nulo") @NotBlank(message = "campo nome não pode estar vazio") String isbn) {
+    public void setIsbn(@NotNull(message = "O campo isbn não pode ser nulo") @NotBlank(message = "campo isbn não pode estar vazio") String isbn) {
         this.isbn = isbn;
     }
 
@@ -87,7 +87,7 @@ public class LivroDTO {
         return numeroPaginas;
     }
 
-    public void setNumeroPaginas(@NotNull(message = "O campo numeroPaginas não pode ser nulo") int numeroPaginas) {
+    public void setNumeroPaginas(@NotNull(message = "O campo numeroPaginas não pode ser nulo") @NotBlank(message = "campo numeroPaginas não pode estar vazio") int numeroPaginas) {
         this.numeroPaginas = numeroPaginas;
     }
 
@@ -99,11 +99,11 @@ public class LivroDTO {
         this.dataCompra = dataCompra;
     }
 
-    public @NotNull(message = "O campo numeroPaginas não pode ser nulo") @Digits(integer = 15, fraction = 3) BigDecimal getValorCompra() {
+    public @NotNull(message = "O campo valorCompra não pode ser nulo") @Digits(integer = 15, fraction = 3) BigDecimal getValorCompra() {
         return valorCompra;
     }
 
-    public void setValorCompra(@NotNull(message = "O campo numeroPaginas não pode ser nulo") @Digits(integer = 15, fraction = 3) BigDecimal valorCompra) {
+    public void setValorCompra(@NotNull(message = "O campo valorCompra não pode ser nulo") @Digits(integer = 15, fraction = 3) BigDecimal valorCompra) {
         this.valorCompra = valorCompra;
     }
 

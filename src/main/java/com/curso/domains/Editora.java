@@ -1,9 +1,13 @@
 package com.curso.domains;
 
+import com.curso.domains.dtos.EditoraDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -15,14 +19,15 @@ public class Editora {
     private Integer id;
 
     @NotNull @NotBlank
+    @Column(unique = true)
     private String cnpj;
 
     @NotNull @NotBlank
     private String razaoSocial;
 
-    @ManyToOne
-    @JoinColumn(name = "idlivro")
-    private Livro livro;
+    @JsonIgnore
+    @OneToMany(mappedBy = "editora")
+    private List<Livro> livros = new ArrayList<>();
 
     public Editora() {
     }
@@ -31,6 +36,12 @@ public class Editora {
         this.id = id;
         this.razaoSocial = razaoSocial;
         this.cnpj = cnpj;
+    }
+
+    public Editora(EditoraDTO dto){
+        this.id = dto.getId();
+        this.razaoSocial = dto.getRazaoSocial();
+        this.cnpj = dto.getCnpj();
     }
 
     public Integer getId() {
@@ -57,12 +68,12 @@ public class Editora {
         this.razaoSocial = razaoSocial;
     }
 
-    public Livro getLivro() {
-        return livro;
+    public List<Livro> getLivros() {
+        return livros;
     }
 
-    public void setLivro(Livro livro) {
-        this.livro = livro;
+    public void setLivros(List<Livro> livros) {
+        this.livros = livros;
     }
 
     @Override
