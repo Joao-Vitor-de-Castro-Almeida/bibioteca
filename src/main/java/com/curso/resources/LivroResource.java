@@ -16,6 +16,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(value = "/livro")
 public class LivroResource {
@@ -23,6 +24,7 @@ public class LivroResource {
     @Autowired
     private LivroService livroService;
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping
     public ResponseEntity<List<LivroDTO>> findAll(){
         return ResponseEntity.ok().body(livroService.findAll());

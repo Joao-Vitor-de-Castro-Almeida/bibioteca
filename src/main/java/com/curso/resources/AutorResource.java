@@ -12,6 +12,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
+
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(value = "/autor")
 public class AutorResource {
@@ -19,6 +21,7 @@ public class AutorResource {
     @Autowired
     private AutorService autorService;
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping
     public ResponseEntity<List<AutorDTO>> findAll(){
         return ResponseEntity.ok().body(autorService.findAll());

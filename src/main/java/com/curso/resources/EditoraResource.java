@@ -16,6 +16,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(value = "/editora")
 public class EditoraResource {
@@ -23,6 +24,7 @@ public class EditoraResource {
     @Autowired
     private EditoraService editoraService;
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping
     public ResponseEntity<List<EditoraDTO>> findAll(){
         return ResponseEntity.ok().body(editoraService.findAll());
